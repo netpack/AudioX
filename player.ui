@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>player</class>
+ <widget class="QMainWindow" name="player">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1070</width>
+    <height>691</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>AudioX</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/48x48.png</normaloff>:/48x48.png</iconset>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonFollowStyle</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="acceptDrops">
+    <bool>true</bool>
+   </property>
+   <widget class="QPushButton" name="pushButtonPlay">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Courier 10 Pitch</family>
+      <pointsize>24</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Play</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../../usr/share/icons/oxygen/32x32/actions/media-playback-start.png</normaloff>../../../../usr/share/icons/oxygen/32x32/actions/media-playback-start.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="nextFile">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>0</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Skip and Play Next</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addFiles">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>0</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Directly Load Files</string>
+    </property>
+   </widget>
+   <widget class="Phonon::SeekSlider" name="seekSlider" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>1071</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Phonon::VolumeSlider" name="volumeSlider" native="true">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>0</y>
+      <width>291</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="timeLcd">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>0</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Purisa</family>
+      <pointsize>20</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stopAction">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>0</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Stop</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="nowPlaying">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>30</y>
+      <width>751</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Garuda</family>
+      <pointsize>15</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+      <underline>false</underline>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">text-align:center;
+color:blue;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>90</y>
+      <width>981</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>../../../../usr/share/icons/oxygen/32x32/actions/align-vertical-center.png</normaloff>../../../../usr/share/icons/oxygen/32x32/actions/align-vertical-center.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>Playlist</string>
+     </attribute>
+     <widget class="QListWidget" name="listWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>971</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="dragEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="dragDropOverwriteMode">
+       <bool>true</bool>
+      </property>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::InternalMove</enum>
+      </property>
+      <property name="defaultDropAction">
+       <enum>Qt::MoveAction</enum>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>../../../../usr/share/icons/oxygen/32x32/actions/align-vertical-bottom.png</normaloff>../../../../usr/share/icons/oxygen/32x32/actions/align-vertical-bottom.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>Historylist</string>
+     </attribute>
+     <widget class="QListWidget" name="historylist">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1071</width>
+        <height>201</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Record</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>30</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../../../usr/share/icons/oxygen/32x32/actions/media-record.png</normaloff>../../../../usr/share/icons/oxygen/32x32/actions/media-record.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>51</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Record:</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLCDNumber" name="txt_horas">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>0</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="digitCount">
+     <number>8</number>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>330</y>
+      <width>1061</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Music</string>
+     </attribute>
+     <widget class="QTableView" name="musicView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>801</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::CustomContextMenu</enum>
+      </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="showDropIndicator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="dragEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="dragDropOverwriteMode">
+       <bool>false</bool>
+      </property>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragDrop</enum>
+      </property>
+      <property name="defaultDropAction">
+       <enum>Qt::CopyAction</enum>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+     </widget>
+     <widget class="QToolBox" name="toolBox">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>0</y>
+        <width>251</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="toolBoxSearch">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>251</width>
+         <height>149</height>
+        </rect>
+       </property>
+       <attribute name="icon">
+        <iconset>
+         <normaloff>../../../../usr/share/icons/gnome/48x48/actions/search.png</normaloff>../../../../usr/share/icons/gnome/48x48/actions/search.png</iconset>
+       </attribute>
+       <attribute name="label">
+        <string>Search</string>
+       </attribute>
+       <widget class="QLineEdit" name="txt_search">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>241</width>
+          <height>27</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>30</y>
+          <width>91</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Search</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="toolBoxFilters">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>251</width>
+         <height>149</height>
+        </rect>
+       </property>
+       <attribute name="icon">
+        <iconset>
+         <normaloff>../../../../usr/share/icons/gnome/48x48/places/folder-music.png</normaloff>../../../../usr/share/icons/gnome/48x48/places/folder-music.png</iconset>
+       </attribute>
+       <attribute name="label">
+        <string>Filters</string>
+       </attribute>
+       <widget class="QCheckBox" name="checkBox_filter_genre1">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>141</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Where genre1 is:</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cBoxGenre1">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>201</width>
+          <height>27</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="checkBox_filter_genre2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>50</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Where genre2 is:</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cBoxGenre2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>201</width>
+          <height>27</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>110</y>
+          <width>121</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Filter!</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Jingles</string>
+     </attribute>
+     <widget class="QTableView" name="jinglesView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1061</width>
+        <height>221</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_7">
+     <attribute name="title">
+      <string>Publicity</string>
+     </attribute>
+     <widget class="QTableView" name="PubView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1061</width>
+        <height>221</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_8">
+     <attribute name="title">
+      <string>Programs</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_9">
+     <attribute name="title">
+      <string>Play On Top</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>411</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="title">
+       <string>Select a file to Play On Top:</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Load File</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../usr/share/icons/oxygen/16x16/actions/view-barcode-add.png</normaloff>../../../../usr/share/icons/oxygen/16x16/actions/view-barcode-add.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>20</y>
+         <width>41</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../usr/share/icons/oxygen/16x16/actions/arrow-right.png</normaloff>../../../../usr/share/icons/oxygen/16x16/actions/arrow-right.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>20</y>
+         <width>41</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../usr/share/icons/oxygen/16x16/actions/media-playback-stop.png</normaloff>../../../../usr/share/icons/oxygen/16x16/actions/media-playback-stop.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="fast_label">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>60</y>
+         <width>791</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Load a file to play fast or </string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_10">
+     <attribute name="title">
+      <string>Youtube</string>
+     </attribute>
+     <widget class="QWebView" name="webView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>621</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="url">
+       <url>
+        <string>about:blank</string>
+       </url>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QVUMeter" name="qvumeter" native="true">
+    <property name="geometry">
+     <rect>
+      <x>999</x>
+      <y>120</y>
+      <width>61</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>VU Meter</string>
+    </property>
+    <property name="whatsThis">
+     <string>VU Meter</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>580</y>
+      <width>181</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Update / Reset tables</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1070</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionConfigurations"/>
+    <addaction name="actionBuy_me_a_Coffe"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuAudio">
+    <property name="title">
+     <string>Audio</string>
+    </property>
+    <addaction name="actionAdd_Jingle"/>
+    <addaction name="actionAdd_Music"/>
+    <addaction name="actionAdd_Program"/>
+    <addaction name="actionAdd_Publicity"/>
+    <addaction name="actionManage_Genres"/>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuAudio"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAdd_Music"/>
+   <addaction name="actionAdd_Jingle"/>
+   <addaction name="actionAdd_Publicity"/>
+   <addaction name="actionAdd_Program"/>
+   <addaction name="actionManage_Genres"/>
+   <addaction name="actionConfigurations"/>
+  </widget>
+  <action name="actionAbout_AudioEx">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../usr/share/icons/oxygen/32x32/actions/edit-image-face-recognize.png</normaloff>../../../../usr/share/icons/oxygen/32x32/actions/edit-image-face-recognize.png</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionConfigurations">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../usr/share/icons/oxygen/32x32/actions/configure.png</normaloff>../../../../usr/share/icons/oxygen/32x32/actions/configure.png</iconset>
+   </property>
+   <property name="text">
+    <string>Config</string>
+   </property>
+  </action>
+  <action name="actionAdd_Music">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../usr/share/icons/Mint-X/mimetypes/48/application-ogg.png</normaloff>../../../../usr/share/icons/Mint-X/mimetypes/48/application-ogg.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Music</string>
+   </property>
+  </action>
+  <action name="actionBuy_me_a_Coffe">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../usr/share/icons/Mint-X/apps/32/caffeine.png</normaloff>../../../../usr/share/icons/Mint-X/apps/32/caffeine.png</iconset>
+   </property>
+   <property name="text">
+    <string>Buy us a Coffee ;-)</string>
+   </property>
+  </action>
+  <action name="actionManage_Genres">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../usr/share/icons/gnome/256x256/places/folder-music.png</normaloff>../../../../usr/share/icons/gnome/256x256/places/folder-music.png</iconset>
+   </property>
+   <property name="text">
+    <string>Manage Genres</string>
+   </property>
+  </action>
+  <action name="actionAdd_Jingle">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../usr/share/icons/Mint-X/mimetypes/48/audio-x-wav.png</normaloff>../../../../usr/share/icons/Mint-X/mimetypes/48/audio-x-wav.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Jingle</string>
+   </property>
+  </action>
+  <action name="actionAdd_Publicity">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../usr/share/icons/Mint-X/mimetypes/48/gnome-mime-text-x-vcalendar.png</normaloff>../../../../usr/share/icons/Mint-X/mimetypes/48/gnome-mime-text-x-vcalendar.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Publicity</string>
+   </property>
+  </action>
+  <action name="actionAdd_Program">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../usr/share/icons/Mint-X/mimetypes/48/audio-x-wav.png</normaloff>../../../../usr/share/icons/Mint-X/mimetypes/48/audio-x-wav.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Program</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../usr/share/icons/Mint-X/actions/32/exit.png</normaloff>../../../../usr/share/icons/Mint-X/actions/32/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::SeekSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/seekslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::VolumeSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/volumeslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QVUMeter</class>
+   <extends>QWidget</extends>
+   <header>qvumeter.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButtonPlay</sender>
+   <signal>clicked()</signal>
+   <receiver>player</receiver>
+   <slot>playPause()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>92</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nextFile</sender>
+   <signal>clicked()</signal>
+   <receiver>player</receiver>
+   <slot>nextFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>281</x>
+     <y>54</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>255</x>
+     <y>150</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addFiles</sender>
+   <signal>clicked()</signal>
+   <receiver>player</receiver>
+   <slot>addFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>324</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>145</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stopAction</sender>
+   <signal>clicked()</signal>
+   <receiver>player</receiver>
+   <slot>stopAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>166</x>
+     <y>81</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>playPause()</slot>
+  <slot>addFiles()</slot>
+  <slot>nextFile()</slot>
+  <slot>playAction()</slot>
+  <slot>pauseAction()</slot>
+  <slot>stopAction()</slot>
+ </slots>
+</ui>
