@@ -18,8 +18,6 @@
 #include "add_music_single.h"
 #include "ui_add_music_single.h"
 #include <QFileDialog>
-#include "mainwindow.h"
-#include "add_music.h"
 //#include "connect.h"
 #include <QMessageBox>
 #include <QtSql>
@@ -31,9 +29,9 @@ add_music_single::add_music_single(QWidget *parent) :
 
     if(!adb.isOpen()){
         //connect to db
-        qDebug()<<"opening db form 16 in add_music_single.cpp";
+        qDebug()<<"opening db from add_music_single.cpp";
             adb=QSqlDatabase::addDatabase("QSQLITE");
-            adb.setDatabaseName("/home/fred/adb.db");
+            adb.setDatabaseName("../config/adb.db");
             adb.open();
         //eof connect to db
     }
@@ -75,9 +73,7 @@ void add_music_single::on_toolButton_clicked()
 void add_music_single::on_pushButton_2_clicked()
 {
     this->hide();
-    add_music add_music;
-    add_music.setModal(true);
-    add_music.exec();
+
 }
 
 void add_music_single::on_pushButton_clicked()

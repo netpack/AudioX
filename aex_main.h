@@ -40,6 +40,8 @@ private slots:
     void on_pushButton_2_clicked();
 
 
+    void on_bt_manage_db_clicked();
+
 private:
     Ui::Aex_main *ui;
 

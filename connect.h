@@ -15,25 +15,18 @@
     For more info contact: info@netpack.pt
 
     */
-#ifndef ADD_PUB_SELECT_DATE_TIME_H
-#define ADD_PUB_SELECT_DATE_TIME_H
-
-#include <QDialog>
-
-namespace Ui {
-class add_pub_select_date_time;
-}
-
-class add_pub_select_date_time : public QDialog
+#ifndef CONNECT_H
+#define CONNECT_H
+#include <QtSql>
+#include <QtDebug>
+#include <QFileInfo>
+class connect
 {
-    Q_OBJECT
-
 public:
-    explicit add_pub_select_date_time(QWidget *parent = 0);
-    ~add_pub_select_date_time();
+    QSqlDatabase adb;
+public slots:
+    void checkDbOpen();
 
-private:
-    Ui::add_pub_select_date_time *ui;
 };
 
-#endif // ADD_PUB_SELECT_DATE_TIME_H
+#endif // CONNECT_H

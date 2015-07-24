@@ -17,16 +17,19 @@
     */
 #include <QtGui/QApplication>
 #include "player.h"
+//#include "aex_main.h"
 
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
 
-    a.setApplicationName("AudioEx");
+    a.setApplicationName("AudioX");
 
     player w;
-    w.setWindowIcon(QIcon(":/Icon/images/48x48.png"));
+
     w.show();
-    
+
     return a.exec();
+
 }

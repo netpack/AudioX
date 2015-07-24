@@ -22,8 +22,6 @@
 #include <QFileInfo>
 #include <QFile>
 #include <aex_main.h>
-#include <add_music.h>
-#include "mainwindow.h"
 #include "player.h"
 
 Aex_main::Aex_main(QWidget *parent) :
@@ -41,14 +39,12 @@ Aex_main::~Aex_main()
 
 void Aex_main::on_bt_add_music_clicked()
 {
-    //this->hide();
-    add_music add_music;
-    add_music.setModal(true);
-    add_music.exec();
+
 }
 
 void Aex_main::on_pushButton_clicked()
 {
+ /*
   MainWindow conn;
   QSqlQueryModel * model=new QSqlQueryModel();
   conn.connOpen();
@@ -61,10 +57,12 @@ void Aex_main::on_pushButton_clicked()
   conn.connClose();
 
   qDebug()<<model->rowCount();
+  */
 }
 
 void Aex_main::on_pushButton_2_clicked()
 {
+    /*
     MainWindow conn;
     QSqlQueryModel * model=new QSqlQueryModel();
     conn.connOpen();
@@ -77,6 +75,12 @@ void Aex_main::on_pushButton_2_clicked()
     conn.connClose();
 
     qDebug()<<model->rowCount();
+    */
 }
 
 
+
+void Aex_main::on_bt_manage_db_clicked()
+{
+
+}

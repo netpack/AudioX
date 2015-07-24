@@ -15,17 +15,16 @@
     For more info contact: info@netpack.pt
 
     */
-#include "add_pub_select_date_time.h"
-#include "ui_add_pub_select_date_time.h"
+#include "connect.h"
 
-add_pub_select_date_time::add_pub_select_date_time(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::add_pub_select_date_time)
-{
-    ui->setupUi(this);
+void connect::checkDbOpen(){
+    /*connect to db*/
+        if(!adb.isOpen()){
+            qDebug()<<"Opening db from checkDbOpen in connect.cpp";
+                adb=QSqlDatabase::addDatabase("QSQLITE");
+                adb.setDatabaseName("../config/adb.db");
+                adb.open();
+        }
+        /*eof connect to db*/
 }
 
-add_pub_select_date_time::~add_pub_select_date_time()
-{
-    delete ui;
-}

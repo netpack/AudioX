@@ -94,5 +94,8 @@
         <file>../../../../usr/share/icons/Mint-X/apps/48/xfce4-clipman-plugin.png</file>
         <file>../../../../usr/share/icons/Mint-X/apps/48/youtube.png</file>
         <file>48x48.png</file>
+        <file>../AudioX v0 beta/config/adb.db</file>
+        <file>../AudioX v0 beta/config/settings.conf</file>
+        <file>icons/Genres_Limav/Various.png</file>
     </qresource>
 </RCC>

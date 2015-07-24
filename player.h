@@ -17,7 +17,6 @@
     */
 #ifndef PLAYER_H
 #define PLAYER_H
-
 #include <QMainWindow>
 #include <QtSql>
 #include <QtDebug>
@@ -30,6 +29,8 @@
 
 
 
+
+
 namespace Ui {
 class player;
 
@@ -39,16 +40,19 @@ class player : public QMainWindow
 {
     Q_OBJECT
 
-    
 public:
     explicit player(QWidget *parent = 0);
     ~player();
 
-    QSqlDatabase adb;
+
     qint32 transitionTime() const;
     void setTransitionTime(qint32 msec);
+    void update_music_table();
+    void checkDbOpen();
+
 
 private slots:
+    void musicViewContextMenu(const QPoint&);
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
@@ -73,18 +77,29 @@ private slots:
     void on_actionManage_Genres_triggered();
     void on_actionAdd_Jingle_triggered();
     void dataReceived(const QMap<Phonon::AudioDataOutput::Channel, QVector<qint16> >);
-    void on_listWidget_clicked(const QModelIndex &index);
+    void on_list_playlist_clicked(const QModelIndex &index);
     void on_actionExit_triggered();
-    void update_music_table();
-    void checkDbOpen();
     void on_pushButton_5_clicked();
     void on_jinglesView_pressed(const QModelIndex &index);
     void on_pushButton_6_clicked();
     void on_pushButton_7_clicked();
     void on_actionAdd_Publicity_triggered();
     void run_scheduler();
+    void on_actionSet_active_database_triggered();
+    void on_bt_video_download_clicked();
+    void on_stopAction_clicked();
+    void on_bt_autoMode_clicked();
+    void autoModeGetMoreSongs();
+    void actionAdd_a_directory();
+    void on_addFiles_clicked();
+    void on_actionAdd_a_directory_triggered();
+    void list_playlistContextMenu(const QPoint&);
+    void on_actionSave_Playlist_triggered();
+    void on_actionClear_Playlist_triggered();
+    void on_actionLoad_Playlist_triggered();
 
 private:
+    QSqlDatabase adb;
     Ui::player *ui;
     Phonon::MediaObject *music;
     QString *file;
@@ -102,12 +117,16 @@ private:
     QString xaction;
     QMap<int, QWidget *> map;
     QString lastupdated;
+    int playing;
     int indexSourceChanged;
     int indexcanal;
     int indexJust3rdDropEvt;
-    //int indexLastDbValue;
-
-
+    QString txt_selected_db;
+    QString disableSeekBar;
+    QString normalization_soft;
+    QString Disable_Volume;
+    QString ask_normalize_new_files;
+    int autoMode;
 };
 
 #endif // PLAYER_H

@@ -29,7 +29,7 @@ addJingle::addJingle(QWidget *parent) :
     ui->setupUi(this);
     /*connect to db*/
         adb=QSqlDatabase::addDatabase("QSQLITE");
-        adb.setDatabaseName("/home/fred/adb.db");
+        adb.setDatabaseName("../config/adb.db");
         if(adb.open())
         {
            qDebug()<<"db loaded";

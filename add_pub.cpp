@@ -131,6 +131,7 @@ void add_pub::on_pushButton_4_clicked()
 
                         QString thisdateline = thisday+"/"+thismonth+"/"+thisyear+" at "+thishour+":"+thismin;
                         ui->listWidget->addItem(thisdateline);
+                        qDebug()<<"134 add_pub.cpp Add This line: "<<thisdateline;
 
                     }
                     
